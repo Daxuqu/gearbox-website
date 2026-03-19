@@ -1,0 +1,374 @@
+/* ============ Breadcrumb ============ */
+.breadcrumb {
+  padding: var(--space-4) 0;
+  background: var(--neutral-50);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.breadcrumb div {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.breadcrumb a {
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+  color: var(--primary-500);
+}
+
+.breadcrumbCurrent {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ============ Detail ============ */
+.detailSection {
+  padding: var(--space-10) 0 var(--space-12);
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+.mainImage {
+  background: linear-gradient(135deg, var(--neutral-100), var(--neutral-50));
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.imagePlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--primary-400);
+}
+
+.imagePlaceholder span {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--neutral-400);
+}
+
+.imageTrust {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.seriesTag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-4);
+  background: var(--primary-50);
+  color: var(--primary-600);
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-4);
+}
+
+.productTitle {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: var(--space-4);
+}
+
+.productDesc {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--space-6);
+}
+
+.quickSpecs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--neutral-50);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-8);
+}
+
+.quickSpec {
+  text-align: center;
+}
+
+.quickSpecLabel {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-1);
+}
+
+.quickSpecValue {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary-700);
+}
+
+.ctaGroup {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* ============ Specs Table ============ */
+.specsSection {
+  background: var(--surface-secondary);
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-6);
+}
+
+.specsTable {
+  max-width: 700px;
+}
+
+.specsTable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specsTable tr {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.specsTable td {
+  padding: var(--space-4) var(--space-5);
+  font-size: 0.95rem;
+}
+
+.specKey {
+  font-weight: 600;
+  color: var(--neutral-700);
+  width: 40%;
+}
+
+.specValue {
+  color: var(--text-primary);
+}
+
+/* ============ Features ============ */
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+}
+
+.featuresList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: 0.95rem;
+  color: var(--neutral-700);
+}
+
+.featureItem svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.appTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.appTag {
+  padding: var(--space-2) var(--space-4);
+  background: var(--primary-50);
+  color: var(--primary-700);
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* ============ Inquiry ============ */
+.inquirySection {
+  padding: var(--space-16) 0;
+  background: linear-gradient(135deg, var(--neutral-950), var(--primary-900));
+}
+
+.inquiryCard {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+.inquiryInfo h2 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: var(--space-4);
+}
+
+.inquiryInfo p {
+  color: var(--neutral-300);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.inquiryForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.formInput,
+.formTextarea {
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  color: white;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: var(--accent-400);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.formInputReadonly {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ============ Related Products ============ */
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-6);
+}
+
+.relatedCard {
+  padding: var(--space-6);
+  background: var(--surface-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--transition-base);
+}
+
+.relatedCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.relatedImage {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--neutral-50);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+  color: var(--primary-300);
+}
+
+.relatedCard h4 {
+  font-size: 1rem;
+  margin-bottom: var(--space-2);
+}
+
+.relatedCard p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-3);
+}
+
+.productCta {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--primary-500);
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 768px) {
+  .detailGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .quickSpecs {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .quickSpec {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ctaGroup {
+    flex-direction: column;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .inquiryCard {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .imageTrust {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+}
