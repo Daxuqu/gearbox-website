@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `${product.name} — ${product.seriesName}`,
-    description: product.shortDescription + ` High quality ${product.series} series gearbox from GearPro Transmission. Factory direct pricing with worldwide delivery.`,
+    description: product.shortDescription + ` High quality ${product.series} series gearbox from WGG. Factory direct pricing with worldwide delivery.`,
   };
 }
 
@@ -96,7 +96,7 @@ export default async function ProductDetailPage({ params }) {
                   Request Quote for {product.model}
                 </Link>
                 <a
-                  href={`https://wa.me/8613800138000?text=Hi%2C%20I%27m%20interested%20in%20${encodeURIComponent(product.name)}%20(${product.model}).%20Please%20send%20me%20more%20details%20and%20pricing.`}
+                  href={`https://wa.me/8615325008533?text=Hi%2C%20I%27m%20interested%20in%20${encodeURIComponent(product.name)}%20(${product.model}).%20Please%20send%20me%20more%20details%20and%20pricing.`}
                   className="btn btn-outline btn-lg"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -197,12 +197,12 @@ export default async function ProductDetailPage({ params }) {
             "@type": "Product",
             name: product.name,
             description: product.description,
-            brand: { "@type": "Brand", name: "GearPro Transmission" },
+            brand: { "@type": "Brand", name: "WGG" },
             model: product.model,
             category: product.seriesName,
             manufacturer: {
               "@type": "Organization",
-              name: "GearPro Transmission",
+              name: "WGG",
               url: "https://www.gearpro-transmission.com",
             },
             offers: {

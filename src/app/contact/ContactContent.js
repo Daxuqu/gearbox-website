@@ -22,8 +22,8 @@ const contactInfo = [
       </svg>
     ),
     title: 'Phone / WhatsApp',
-    value: '+86 138 0013 8000',
-    link: 'https://wa.me/8613800138000',
+    value: '+86 15325008533',
+    link: 'https://wa.me/8615325008533',
   },
   {
     icon: (

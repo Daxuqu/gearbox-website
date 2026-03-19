@@ -87,7 +87,7 @@ export default function HomePage() {
       {/* Why Choose Us */}
       <section className={`section ${styles.advantagesSection}`}>
         <div className="container">
-          <span className="section-label">Why GearPro</span>
+          <span className="section-label">Why WGG</span>
           <h2 className="section-title">Your Reliable Gearbox Partner</h2>
           <p className="section-subtitle">
             We combine manufacturing excellence with outstanding service to deliver the best value for your business.

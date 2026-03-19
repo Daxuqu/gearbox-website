@@ -1,8 +1,8 @@
 import styles from './about.module.css';
 
 export const metadata = {
-  title: 'About Us — GearPro Transmission',
-  description: 'Learn about GearPro Transmission — a leading industrial gearbox manufacturer with 15+ years of experience, ISO certified quality, and exports to 60+ countries worldwide.',
+  title: 'About Us — WGG',
+  description: 'Learn about WGG — a leading industrial gearbox manufacturer with 15+ years of experience, ISO certified quality, and exports to 60+ countries worldwide.',
 };
 
 const milestones = [
@@ -28,7 +28,7 @@ export default function AboutPage() {
       {/* Page Header */}
       <section className={styles.pageHeader}>
         <div className="container">
-          <span className="section-label">About GearPro</span>
+          <span className="section-label">About WGG</span>
           <h1>Your Trusted Gearbox Manufacturing Partner</h1>
           <p>15+ years of excellence in industrial gear transmission solutions, serving customers across 60+ countries.</p>
         </div>
@@ -48,7 +48,7 @@ export default function AboutPage() {
               <span className="section-label">Who We Are</span>
               <h2>Precision Engineering, Global Delivery</h2>
               <p>
-                GearPro Transmission is a professional manufacturer of industrial gearboxes and speed reducers, 
+                WGG is a professional manufacturer of industrial gearboxes and speed reducers, 
                 located in Zhejiang, China — the heart of China's gear manufacturing industry.
               </p>
               <p>

@@ -5,17 +5,17 @@ import FloatingCTA from '@/components/FloatingCTA';
 
 export const metadata = {
   title: {
-    default: 'GearPro Transmission — Industrial Gearbox Manufacturer & Exporter',
-    template: '%s | GearPro Transmission',
+    default: 'WGG — Industrial Gearbox Manufacturer & Exporter',
+    template: '%s | WGG',
   },
-  description: 'Leading manufacturer and exporter of industrial gearboxes, worm reducers, helical gear reducers, bevel gearboxes. ISO certified, competitive pricing, global shipping.',
-  keywords: ['gearbox manufacturer', 'speed reducer', 'worm gearbox supplier', 'helical gear reducer', 'industrial gearbox exporter', 'China gearbox factory'],
+  description: 'Premium industrial gearboxes, speed reducers, and power transmission solutions. Discover our RV, R, K, F, and S series gear units for global applications.',
+  keywords: ['industrial gearbox', 'speed reducer', 'worm gear', 'helical gear', 'power transmission', 'gear motor', 'WGG'],
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'GearPro Transmission',
-    title: 'GearPro Transmission — Industrial Gearbox Manufacturer & Exporter',
-    description: 'Leading manufacturer and exporter of industrial gearboxes and speed reducers. ISO certified quality, competitive prices, worldwide delivery.',
+    siteName: 'WGG',
+    title: 'WGG — Industrial Gearbox Manufacturer & Exporter',
+    description: 'Premium industrial gearboxes, speed reducers, and power transmission solutions.',
   },
   robots: {
     index: true,

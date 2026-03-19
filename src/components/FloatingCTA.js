@@ -6,7 +6,7 @@ export default function FloatingCTA() {
   return (
     <div className={styles.floating}>
       <a
-        href="https://wa.me/8613800138000?text=Hi%2C%20I%27m%20interested%20in%20your%20gearbox%20products."
+        href="https://wa.me/8615325008533?text=Hi%2C%20I%27m%20interested%20in%20your%20gearbox%20products."
         className={`${styles.fab} ${styles.whatsapp}`}
         target="_blank"
         rel="noopener noreferrer"

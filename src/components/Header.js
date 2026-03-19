@@ -28,7 +28,7 @@ export default function Header() {
             </svg>
           </div>
           <div className={styles.logoText}>
-            <span className={styles.logoName}>GearPro</span>
+            <span className={styles.logoName}>WGG</span>
             <span className={styles.logoTag}>Transmission</span>
           </div>
         </Link>

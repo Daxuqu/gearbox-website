@@ -14,7 +14,7 @@ export default function Footer() {
                 <circle cx="18" cy="18" r="6" fill="currentColor"/>
                 <path d="M18 4V10M18 26V32M4 18H10M26 18H32M8 8L12.5 12.5M23.5 23.5L28 28M28 8L23.5 12.5M12.5 23.5L8 28" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
               </svg>
-              <span>GearPro Transmission</span>
+              <span>WGG</span>
             </div>
             <p className={styles.description}>
               Professional manufacturer and exporter of industrial gearboxes and speed reducers. Serving global customers with quality, reliability, and competitive pricing since 2008.
@@ -59,7 +59,7 @@ export default function Footer() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
                 </svg>
-                <a href="tel:+8613800138000">+86 138 0013 8000</a>
+                <a href="tel:+8615325008533">+86 15325008533</a>
               </li>
               <li>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -73,7 +73,7 @@ export default function Footer() {
         </div>
 
         <div className={styles.bottom}>
-          <p>&copy; {new Date().getFullYear()} GearPro Transmission. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} WGG. All rights reserved.</p>
           <div className={styles.bottomLinks}>
             <Link href="/contact">Privacy Policy</Link>
             <Link href="/contact">Terms of Service</Link>
