@@ -1,4 +1,4 @@
-import { getProducts } from '@/sanity/client';
+import { getProducts } from '@/lib/strapi';
 
 export default async function sitemap() {
   const baseUrl = 'https://www.gearpro-transmission.com';

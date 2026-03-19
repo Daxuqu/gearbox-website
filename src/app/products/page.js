@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import ProductsContent from './ProductsContent';
-import { getProducts } from '@/sanity/client';
+import { getProducts } from '@/lib/strapi';
 
 export const metadata = {
   title: 'Products — Industrial Gearboxes & Speed Reducers',

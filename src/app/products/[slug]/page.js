@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getProducts, getProductBySlug, getRelatedProducts } from '@/sanity/client';
+import { getProducts, getProductBySlug, getRelatedProducts } from '@/lib/strapi';
 import styles from './productDetail.module.css';
 import InquiryForm from './InquiryForm';
 
@@ -27,7 +27,7 @@ export default async function ProductDetailPage({ params }) {
   const product = await getProductBySlug(slug);
   if (!product) notFound();
 
-  const relatedProducts = await getRelatedProducts(product.category, product.id);
+  const relatedProducts = await getRelatedProducts(product.category, product.slug);
 
   return (
     <>
