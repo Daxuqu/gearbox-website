@@ -3,7 +3,6 @@
 import { useState, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import products from '@/data/products.json';
 import styles from './products.module.css';
 
 const categories = [
@@ -15,14 +14,14 @@ const categories = [
   { id: 'helical-worm', label: 'S Helical Worm' },
 ];
 
-export default function ProductsContent() {
+export default function ProductsContent({ initialProducts = [] }) {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category') || 'all';
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredProducts = useMemo(() => {
-    let result = products;
+    let result = initialProducts;
     if (activeCategory !== 'all') {
       result = result.filter(p => p.category === activeCategory);
     }

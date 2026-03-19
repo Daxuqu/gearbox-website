@@ -1,8 +1,9 @@
-import products from '@/data/products.json';
+import { getProducts } from '@/sanity/client';
 
-export default function sitemap() {
+export default async function sitemap() {
   const baseUrl = 'https://www.gearpro-transmission.com';
 
+  const products = await getProducts();
   const productPages = products.map((product) => ({
     url: `${baseUrl}/products/${product.slug}`,
     lastModified: new Date(),

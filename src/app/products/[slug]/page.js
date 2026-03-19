@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import products from '@/data/products.json';
+import { getProducts, getProductBySlug, getRelatedProducts } from '@/sanity/client';
 import styles from './productDetail.module.css';
 import InquiryForm from './InquiryForm';
 
 export async function generateStaticParams() {
+  const products = await getProducts();
   return products.map((product) => ({
     slug: product.slug,
   }));
@@ -12,7 +13,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const product = products.find(p => p.slug === slug);
+  const product = await getProductBySlug(slug);
   if (!product) return {};
 
   return {
@@ -23,12 +24,10 @@ export async function generateMetadata({ params }) {
 
 export default async function ProductDetailPage({ params }) {
   const { slug } = await params;
-  const product = products.find(p => p.slug === slug);
+  const product = await getProductBySlug(slug);
   if (!product) notFound();
 
-  const relatedProducts = products
-    .filter(p => p.category === product.category && p.id !== product.id)
-    .slice(0, 3);
+  const relatedProducts = await getRelatedProducts(product.category, product.id);
 
   return (
     <>
@@ -53,11 +52,15 @@ export default async function ProductDetailPage({ params }) {
             <div className={styles.imageCol}>
               <div className={styles.mainImage}>
                 <div className={styles.imagePlaceholder}>
-                  <svg width="120" height="120" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="18" cy="18" r="16" stroke="currentColor" strokeWidth="1" opacity="0.3"/>
-                    <circle cx="18" cy="18" r="6" fill="currentColor" opacity="0.15"/>
-                    <path d="M18 4V10M18 26V32M4 18H10M26 18H32M8 8L12.5 12.5M23.5 23.5L28 28M28 8L23.5 12.5M12.5 23.5L8 28" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.2"/>
-                  </svg>
+                  {product.imageUrl ? (
+                    <img src={product.imageUrl} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                  ) : (
+                    <svg width="120" height="120" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="18" cy="18" r="16" stroke="currentColor" strokeWidth="1" opacity="0.3"/>
+                      <circle cx="18" cy="18" r="6" fill="currentColor" opacity="0.15"/>
+                      <path d="M18 4V10M18 26V32M4 18H10M26 18H32M8 8L12.5 12.5M23.5 23.5L28 28M28 8L23.5 12.5M12.5 23.5L8 28" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.2"/>
+                    </svg>
+                  )}
                   <span>{product.model}</span>
                 </div>
               </div>
