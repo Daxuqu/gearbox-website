@@ -1,9 +1,10 @@
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337/api';
 
-export async function getProducts() {
+export async function getProducts(lang = 'en') {
+  const locale = lang === 'zh' ? 'zh-Hans' : 'en';
   try {
     // Strapi v5 formatting: Use robust error handling
-    const res = await fetch(`${STRAPI_URL}/products?pagination[limit]=100`, {
+    const res = await fetch(`${STRAPI_URL}/products?locale=${locale}&pagination[limit]=100`, {
       cache: 'no-store'
     });
     if (!res.ok) return [];
@@ -18,9 +19,10 @@ export async function getProducts() {
   }
 }
 
-export async function getProductBySlug(slug) {
+export async function getProductBySlug(slug, lang = 'en') {
+  const locale = lang === 'zh' ? 'zh-Hans' : 'en';
   try {
-    const res = await fetch(`${STRAPI_URL}/products?filters[slug][$eq]=${slug}`, {
+    const res = await fetch(`${STRAPI_URL}/products?locale=${locale}&filters[slug][$eq]=${slug}`, {
       cache: 'no-store'
     });
     if (!res.ok) return null;
@@ -33,9 +35,10 @@ export async function getProductBySlug(slug) {
   }
 }
 
-export async function getRelatedProducts(category, excludeSlug) {
+export async function getRelatedProducts(category, excludeSlug, lang = 'en') {
+  const locale = lang === 'zh' ? 'zh-Hans' : 'en';
   try {
-    const res = await fetch(`${STRAPI_URL}/products?filters[category][$eq]=${category}&filters[slug][$ne]=${excludeSlug}&pagination[limit]=3`, {
+    const res = await fetch(`${STRAPI_URL}/products?locale=${locale}&filters[category][$eq]=${category}&filters[slug][$ne]=${excludeSlug}&pagination[limit]=3`, {
       cache: 'no-store'
     });
     if (!res.ok) return [];

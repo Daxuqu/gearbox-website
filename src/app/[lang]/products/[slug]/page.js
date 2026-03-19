@@ -5,10 +5,12 @@ import styles from './productDetail.module.css';
 import InquiryForm from './InquiryForm';
 
 export async function generateStaticParams() {
-  const products = await getProducts();
-  return products.map((product) => ({
-    slug: product.slug,
-  }));
+  const productsEn = await getProducts('en');
+  const productsZh = await getProducts('zh');
+  return [
+    ...productsEn.map((product) => ({ lang: 'en', slug: product.slug })),
+    ...productsZh.map((product) => ({ lang: 'zh', slug: product.slug })),
+  ];
 }
 
 export async function generateMetadata({ params }) {
@@ -34,11 +36,11 @@ export default async function ProductDetailPage({ params }) {
       {/* Breadcrumb */}
       <div className={styles.breadcrumb}>
         <div className="container">
-          <Link href="/">Home</Link>
+          <Link href={`/${lang}`}>Home</Link>
           <span>/</span>
-          <Link href="/products">Products</Link>
+          <Link href={`/${lang}/products`}>Products</Link>
           <span>/</span>
-          <Link href={`/products?category=${product.category}`}>{product.seriesName}</Link>
+          <Link href={`/${lang}/products?category=${product.category}`}>{product.seriesName}</Link>
           <span>/</span>
           <span className={styles.breadcrumbCurrent}>{product.model}</span>
         </div>
@@ -95,7 +97,7 @@ export default async function ProductDetailPage({ params }) {
 
               {/* CTA */}
               <div className={styles.ctaGroup}>
-                <Link href={`/contact?product=${encodeURIComponent(product.name)}`} className="btn btn-accent btn-lg">
+                <Link href={`/${lang}/contact?product=${encodeURIComponent(product.name)}`} className="btn btn-accent btn-lg">
                   Request Quote for {product.model}
                 </Link>
                 <a
@@ -174,7 +176,7 @@ export default async function ProductDetailPage({ params }) {
             <h2 className={styles.sectionTitle}>Related Products</h2>
             <div className={styles.relatedGrid}>
               {relatedProducts.map(rp => (
-                <Link href={`/products/${rp.slug}`} key={rp.id} className={styles.relatedCard}>
+                <Link href={`/${lang}/products/${rp.slug}`} key={rp.id} className={styles.relatedCard}>
                   <div className={styles.relatedImage}>
                     <svg width="48" height="48" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="18" cy="18" r="16" stroke="currentColor" strokeWidth="1.5" opacity="0.3"/>

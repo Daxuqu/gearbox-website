@@ -5,21 +5,22 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Header.module.css';
 
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/products', label: 'Products' },
-  { href: '/about', label: 'About Us' },
-  { href: '/contact', label: 'Contact' },
-];
-
-export default function Header() {
+export default function Header({ dict = {}, lang = 'en', switchText = '中文' }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const localePrefix = `/${lang}`;
+
+  const navLinks = [
+    { href: `${localePrefix}`, label: dict.home || 'Home' },
+    { href: `${localePrefix}/products`, label: dict.products || 'Products' },
+    { href: `${localePrefix}/about`, label: dict.about || 'About Us' },
+    { href: `${localePrefix}/contact`, label: dict.contact || 'Contact' },
+  ];
 
   return (
     <header className={styles.header}>
       <div className={`container ${styles.headerInner}`}>
-        <Link href="/" className={styles.logo}>
+        <Link href={localePrefix} className={styles.logo}>
           <div className={styles.logoIcon}>
             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="18" cy="18" r="16" stroke="currentColor" strokeWidth="2"/>
@@ -44,8 +45,16 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <Link href="/contact" className="btn btn-accent" onClick={() => setMenuOpen(false)}>
-            Get a Quote
+          <Link href={`${localePrefix}/contact`} className="btn btn-accent" onClick={() => setMenuOpen(false)}>
+            {dict.contact || 'Get a Quote'}
+          </Link>
+          
+          <Link 
+            href={lang === 'en' ? '/zh' : '/en'} 
+            className={styles.langSwitcher}
+            style={{ fontWeight: 600, color: 'var(--primary-color)', marginLeft: '1rem', textDecoration: 'none' }}
+          >
+            {switchText}
           </Link>
         </nav>
 

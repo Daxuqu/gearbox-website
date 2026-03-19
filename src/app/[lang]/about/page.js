@@ -22,7 +22,8 @@ const certifications = [
   { name: 'CCC', description: 'China Compulsory Certification' },
 ];
 
-export default function AboutPage() {
+export default async function AboutPage({ params }) {
+  const { lang } = await params;
   return (
     <>
       {/* Page Header */}

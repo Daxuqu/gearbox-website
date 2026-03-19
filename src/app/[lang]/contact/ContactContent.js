@@ -49,7 +49,7 @@ const contactInfo = [
   },
 ];
 
-export default function ContactContent() {
+export default function ContactContent({ lang = 'en' }) {
   const searchParams = useSearchParams();
   const productInterest = searchParams.get('product') || '';
 

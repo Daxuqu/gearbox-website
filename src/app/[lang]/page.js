@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import styles from './page.module.css';
-import products from '@/data/products.json';
+import { getDictionary } from '@/dictionaries';
+import { getProducts } from '@/lib/strapi';
 
-const series = [
+const seriesList = [
   { id: 'worm', name: 'RV Series', title: 'Worm Gear Reducers', description: 'Compact, self-locking, wide ratio range', icon: '⚙️' },
   { id: 'helical', name: 'R Series', title: 'Helical Gear Reducers', description: 'High efficiency, smooth & quiet operation', icon: '🔩' },
   { id: 'bevel', name: 'K Series', title: 'Helical Bevel Gearboxes', description: 'Right-angle output, high torque density', icon: '🔧' },
@@ -10,7 +11,7 @@ const series = [
   { id: 'helical-worm', name: 'S Series', title: 'Helical Worm Gearboxes', description: 'Combined efficiency, ultra-high ratios', icon: '🛠️' },
 ];
 
-const advantages = [
+const advantagesList = [
   { icon: '🏭', title: '15+ Years', subtitle: 'Manufacturing Experience', description: 'Established in 2008 with deep expertise in gearbox design and production.' },
   { icon: '🌍', title: '60+', subtitle: 'Countries Served', description: 'Trusted by customers across Asia, Europe, Americas, Africa and Middle East.' },
   { icon: '✅', title: 'ISO 9001', subtitle: 'Certified Quality', description: 'Rigorous quality management with CE, ISO, and SGS certifications.' },
@@ -24,7 +25,15 @@ const stats = [
   { value: '99.2%', label: 'Quality Pass Rate' },
 ];
 
-export default function HomePage() {
+export default async function HomePage({ params }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+  
+  // Use locale in getProducts call
+  const products = await getProducts(lang === 'zh' ? 'zh-Hans' : 'en');
+
+  const prefix = `/${lang}`;
+
   return (
     <>
       {/* Hero Section */}
@@ -35,24 +44,22 @@ export default function HomePage() {
         </div>
         <div className={`container ${styles.heroContent}`}>
           <span className={styles.heroBadge}>🏭 Professional Gearbox Manufacturer Since 2008</span>
-          <h1 className={styles.heroTitle}>
-            Industrial <span className={styles.heroHighlight}>Gearbox</span> Solutions for Global Markets
+          <h1 className={`${styles.heroTitle} slide-up`}>
+            {dict.hero.title}
           </h1>
-          <p className={styles.heroSubtitle}>
-            Precision-engineered speed reducers and gearboxes for every industrial application. 
-            ISO certified quality, competitive factory pricing, and worldwide delivery.
+          <p className={`${styles.heroSubtitle} slide-up`} style={{ animationDelay: '0.1s' }}>
+            {dict.hero.subtitle}
           </p>
-          <div className={styles.heroCtas}>
-            <Link href="/products" className="btn btn-accent btn-lg">
-              Browse Products →
+          <div className={`${styles.heroCtas} slide-up`} style={{ animationDelay: '0.2s' }}>
+            <Link href={`${prefix}/contact`} className="btn btn-accent btn-lg">
+              {dict.hero.cta_quote}
             </Link>
-            <Link href="/contact" className="btn btn-secondary btn-lg">
-              Request a Quote
+            <Link href={`${prefix}/products`} className="btn btn-outline btn-lg" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.4)' }}>
+              {dict.hero.cta_catalog}
             </Link>
           </div>
-          <div className={styles.heroTrust}>
-            <span>Trusted by 2,000+ customers worldwide</span>
-            <div className={styles.heroStars}>★★★★★</div>
+          <div className={`${styles.heroTrust} slide-up`} style={{ animationDelay: '0.3s' }}>
+             {dict.hero.trust}
           </div>
         </div>
       </section>
@@ -60,16 +67,16 @@ export default function HomePage() {
       {/* Product Series */}
       <section className={`section ${styles.seriesSection}`}>
         <div className="container">
-          <span className="section-label">Our Products</span>
-          <h2 className="section-title">Complete Range of Industrial Gearboxes</h2>
+          <span className="section-label">{dict.nav.products}</span>
+          <h2 className="section-title">{dict.series.title}</h2>
           <p className="section-subtitle">
-            From compact worm reducers to heavy-duty helical gear units — we have the right solution for your application.
+            {dict.series.subtitle}
           </p>
           <div className={styles.seriesGrid}>
-            {series.map((s, i) => {
+            {seriesList.map((s, i) => {
               const count = products.filter(p => p.category === s.id).length;
               return (
-                <Link href={`/products?category=${s.id}`} key={s.id} className={styles.seriesCard} style={{ animationDelay: `${i * 0.1}s` }}>
+                <Link href={`${prefix}/products?category=${s.id}`} key={s.id} className={styles.seriesCard} style={{ animationDelay: `${i * 0.1}s` }}>
                   <div className={styles.seriesIcon}>{s.icon}</div>
                   <div className={styles.seriesInfo}>
                     <span className={styles.seriesName}>{s.name}</span>
@@ -81,6 +88,11 @@ export default function HomePage() {
               );
             })}
           </div>
+          <div className="text-center">
+            <Link href={`${prefix}/products`} className="btn btn-primary" style={{ marginTop: '2rem' }}>
+              {dict.hero.cta_catalog}
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -88,12 +100,12 @@ export default function HomePage() {
       <section className={`section ${styles.advantagesSection}`}>
         <div className="container">
           <span className="section-label">Why WGG</span>
-          <h2 className="section-title">Your Reliable Gearbox Partner</h2>
+          <h2 className="section-title">{dict.advantages.title}</h2>
           <p className="section-subtitle">
-            We combine manufacturing excellence with outstanding service to deliver the best value for your business.
+            {dict.advantages.subtitle}
           </p>
           <div className={styles.advantagesGrid}>
-            {advantages.map((adv, i) => (
+            {advantagesList.map((adv, i) => (
               <div key={i} className={styles.advantageCard}>
                 <div className={styles.advantageIcon}>{adv.icon}</div>
                 <div className={styles.advantageValue}>{adv.title}</div>
@@ -121,14 +133,14 @@ export default function HomePage() {
       <section className={styles.ctaSection}>
         <div className="container">
           <div className={styles.ctaCard}>
-            <h2>Ready to Find the Right Gearbox?</h2>
-            <p>Tell us your requirements and get a free, no-obligation quote within 24 hours.</p>
+            <h2>{dict.cta.title}</h2>
+            <p>{dict.cta.subtitle}</p>
             <div className={styles.ctaButtons}>
-              <Link href="/contact" className="btn btn-accent btn-lg">
-                Get a Free Quote →
+              <Link href={`${prefix}/contact`} className="btn btn-accent btn-lg">
+                {dict.cta.button}
               </Link>
-              <Link href="/products" className="btn btn-outline btn-lg" style={{ borderColor: 'rgba(255,255,255,0.4)', color: 'white' }}>
-                View All Products
+              <Link href={`${prefix}/products`} className="btn btn-outline btn-lg" style={{ borderColor: 'rgba(255,255,255,0.4)', color: 'white' }}>
+                {dict.nav.products}
               </Link>
             </div>
           </div>

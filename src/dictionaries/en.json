@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About Us",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Industrial Gearbox Solutions for Global Markets",
+    "subtitle": "Premium quality speed reducers and power transmission equipment. Trusted by manufacturers in 60+ countries.",
+    "cta_quote": "Get a Quote",
+    "cta_catalog": "View Catalog",
+    "trust": "ISO 9001 Certified • CE Approved • 2-Year Warranty"
+  },
+  "series": {
+    "title": "Our Product Series",
+    "subtitle": "Comprehensive range of gearboxes for every industrial application"
+  },
+  "advantages": {
+    "title": "Your Reliable Gearbox Partner",
+    "subtitle": "We combine manufacturing excellence with outstanding service to deliver the best value for your business."
+  },
+  "cta": {
+    "title": "Ready to Upgrade Your Power Transmission?",
+    "subtitle": "Contact our engineering team today for a free consultation and customized quote based on your specific requirements.",
+    "button": "Request a Quote Now"
+  },
+  "footer": {
+    "desc": "Professional manufacturer and exporter of industrial gearboxes and speed reducers. Serving global customers with quality, reliability, and competitive pricing since 2008.",
+    "quickLinks": "Quick Links",
+    "products": "Products",
+    "contact": "Contact Us",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "langSwitcher": "中文"
+}

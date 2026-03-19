@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import styles from './Footer.module.css';
 
-export default function Footer() {
+export default function Footer({ dict = {}, lang = 'en' }) {
+  const prefix = `/${lang}`;
+  
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.footerInner}`}>
@@ -17,19 +19,19 @@ export default function Footer() {
               <span>WGG</span>
             </div>
             <p className={styles.description}>
-              Professional manufacturer and exporter of industrial gearboxes and speed reducers. Serving global customers with quality, reliability, and competitive pricing since 2008.
+              {dict.desc || "Professional manufacturer and exporter of industrial gearboxes and speed reducers. Serving global customers with quality, reliability, and competitive pricing since 2008."}
             </p>
           </div>
 
           {/* Products */}
           <div className={styles.col}>
-            <h4 className={styles.colTitle}>Products</h4>
+            <h4 className={styles.colTitle}>{dict.products || 'Products'}</h4>
             <ul className={styles.links}>
-              <li><Link href="/products?category=worm">RV Worm Gearbox</Link></li>
-              <li><Link href="/products?category=helical">R Helical Gear Reducer</Link></li>
-              <li><Link href="/products?category=bevel">K Helical Bevel Gearbox</Link></li>
-              <li><Link href="/products?category=parallel">F Parallel Shaft Gearbox</Link></li>
-              <li><Link href="/products?category=helical-worm">S Helical Worm Gearbox</Link></li>
+              <li><Link href={`${prefix}/products?category=worm`}>RV Worm Gearbox</Link></li>
+              <li><Link href={`${prefix}/products?category=helical`}>R Helical Gear Reducer</Link></li>
+              <li><Link href={`${prefix}/products?category=bevel`}>K Helical Bevel Gearbox</Link></li>
+              <li><Link href={`${prefix}/products?category=parallel`}>F Parallel Shaft Gearbox</Link></li>
+              <li><Link href={`${prefix}/products?category=helical-worm`}>S Helical Worm Gearbox</Link></li>
             </ul>
           </div>
 
@@ -37,16 +39,16 @@ export default function Footer() {
           <div className={styles.col}>
             <h4 className={styles.colTitle}>Company</h4>
             <ul className={styles.links}>
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/about#certifications">Certifications</Link></li>
-              <li><Link href="/about#factory">Factory Tour</Link></li>
-              <li><Link href="/contact">Contact Us</Link></li>
+              <li><Link href={`${prefix}/about`}>{dict.about || 'About Us'}</Link></li>
+              <li><Link href={`${prefix}/about#certifications`}>Certifications</Link></li>
+              <li><Link href={`${prefix}/about#factory`}>Factory Tour</Link></li>
+              <li><Link href={`${prefix}/contact`}>{dict.contact || 'Contact Us'}</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div className={styles.col}>
-            <h4 className={styles.colTitle}>Get in Touch</h4>
+            <h4 className={styles.colTitle}>{dict.contact || 'Get in Touch'}</h4>
             <ul className={styles.contactList}>
               <li>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -73,10 +75,10 @@ export default function Footer() {
         </div>
 
         <div className={styles.bottom}>
-          <p>&copy; {new Date().getFullYear()} WGG. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} WGG. {dict.rights || 'All rights reserved.'}</p>
           <div className={styles.bottomLinks}>
-            <Link href="/contact">Privacy Policy</Link>
-            <Link href="/contact">Terms of Service</Link>
+            <Link href={`${prefix}/privacy`}>{dict.privacy || 'Privacy Policy'}</Link>
+            <Link href={`${prefix}/terms`}>{dict.terms || 'Terms of Service'}</Link>
           </div>
         </div>
       </div>

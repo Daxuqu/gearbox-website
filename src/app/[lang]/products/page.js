@@ -7,12 +7,13 @@ export const metadata = {
   description: 'Browse our complete catalog of industrial gearboxes: RV worm reducers, R helical gear reducers, K bevel gearboxes, F parallel shaft gearboxes, and S helical worm gearboxes.',
 };
 
-export default async function ProductsPage() {
-  const products = await getProducts();
+export default async function ProductsPage({ params }) {
+  const { lang } = await params;
+  const products = await getProducts(lang);
 
   return (
     <Suspense fallback={<div style={{ minHeight: '60vh' }} />}>
-      <ProductsContent initialProducts={products} />
+      <ProductsContent initialProducts={products} lang={lang} />
     </Suspense>
   );
 }

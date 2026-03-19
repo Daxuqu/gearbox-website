@@ -2,40 +2,52 @@ import { getProducts } from '@/lib/strapi';
 
 export default async function sitemap() {
   const baseUrl = 'https://www.gearpro-transmission.com';
+  const locales = ['en', 'zh'];
+  
+  const productsEn = await getProducts('en');
+  const productsZh = await getProducts('zh');
 
-  const products = await getProducts();
-  const productPages = products.map((product) => ({
-    url: `${baseUrl}/products/${product.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.8,
-  }));
+  const productPages = [
+    ...productsEn.map((product) => ({
+      url: `${baseUrl}/en/products/${product.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    })),
+    ...productsZh.map((product) => ({
+      url: `${baseUrl}/zh/products/${product.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    }))
+  ];
 
-  return [
+  const staticPages = locales.flatMap((locale) => [
     {
-      url: baseUrl,
+      url: `${baseUrl}/${locale}`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: `${baseUrl}/products`,
+      url: `${baseUrl}/${locale}/products`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/about`,
+      url: `${baseUrl}/${locale}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/contact`,
+      url: `${baseUrl}/${locale}/contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
-    },
-    ...productPages,
-  ];
+    }
+  ]);
+
+  return [...staticPages, ...productPages];
 }

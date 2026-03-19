@@ -14,7 +14,7 @@ const categories = [
   { id: 'helical-worm', label: 'S Helical Worm' },
 ];
 
-export default function ProductsContent({ initialProducts = [] }) {
+export default function ProductsContent({ initialProducts = [], lang = 'en' }) {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category') || 'all';
   const [activeCategory, setActiveCategory] = useState(initialCategory);
@@ -89,7 +89,7 @@ export default function ProductsContent({ initialProducts = [] }) {
           <div className={styles.productsGrid}>
             {filteredProducts.map((product, i) => (
               <Link
-                href={`/products/${product.slug}`}
+                href={`/${lang}/products/${product.slug}`}
                 key={product.id}
                 className={styles.productCard}
                 style={{ animationDelay: `${i * 0.05}s` }}
